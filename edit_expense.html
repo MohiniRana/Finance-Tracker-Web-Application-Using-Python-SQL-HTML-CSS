@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Expense</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Expense</h1>
+        <form id="editExpenseForm" method="POST">
+            <div class="form-group">
+                <label for="edit-amount">Amount:</label>
+                <input type="number" id="edit-amount" name="amount" class="form-control" value="{{ expense.amount }}" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-description">Description:</label>
+                <input type="text" id="edit-description" name="description" class="form-control" value="{{ expense.description }}" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-store">Store:</label>
+                <select id="edit-store" name="store" class="form-control" required>
+                    {% for store in stores %}
+                        <option value="{{ store.id }}">{{ store.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <input type="hidden" id="edit-expense-id" name="id" value="{{ expense.id }}">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
+</body>
+</html>
